@@ -82,15 +82,15 @@ export default function Hero() {
             {[
               {
                 title: "I DID MY BIGGEST CASE BATTLES ON RAIN.GG",
-                id: "9hjwReHpdJw",
+                id: "oEEnnTd4dWI",
               },
               {
                 title: "I 1V1'D MY GIRLFRIEND ON RAIN.GG",
-                id: "44HxUZV9gro",
+                id: "0S6D7aqp7IU",
               },
               {
                 title: "INSANE PRINTING ON RAIN.GG!",
-                id: "wIuVvCuiJhU",
+                id: "lLFkwEgpDLw",
               },
             ].map((video) => (
               <div

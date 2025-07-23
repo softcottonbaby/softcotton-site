@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌐 Base Styles */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  background-color: #0e0e0e;
+  color: white;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+/* ✨ Fade-in Up */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+
+/* 🌈 Gradient Background Animation */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+}
+
+/* ☁️ Cloud Movement */
+@keyframes cloudMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-cloudMove {
+  animation: cloudMove 60s linear infinite;
+}
+
+/* 💫 Soft Fade In */
+@keyframes softFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-softFadeIn {
+  animation: softFadeIn 1.2s ease-out forwards;
+}
+
+/* 🔆 Hero Text Pulse */
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 20px rgba(255, 200, 255, 0.5),
+      0 0 30px rgba(100, 100, 255, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(255, 255, 255, 0.9),
+      0 0 30px rgba(255, 200, 255, 0.8),
+      0 0 40px rgba(100, 100, 255, 0.5);
+    transform: scale(1.03);
+  }
+}
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+.glow-text {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+}
+
+/* ✨ Gradient Text Swipe */
+@keyframes glowSwipe {
+  0% { background-position: -200%; }
+  100% { background-position: 200%; }
+}
+.glow-swipe-text {
+  background: linear-gradient(120deg, rgba(255, 192, 203, 0.2), rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.2));
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: glowSwipe 3s ease-in-out infinite;
+}
+
+.glow-gold {
+  color: #ffe066;
+  text-shadow: 0 0 8px #ffe066, 0 0 12px #ffcc00;
+}
+
+.glow-silver {
+  color: #cfd9ff;
+  text-shadow: 0 0 8px #cfd9ff, 0 0 12px #aabbee;
+}
+
+.glow-bronze {
+  color: #ffb066;
+  text-shadow: 0 0 8px #ffb066, 0 0 12px #ff8c42;
+}
+
+
+
+/* 🌌 Galaxy Sparkles */
+@keyframes galaxy-float {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.9);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-14px) translateX(10px) scale(1.15);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(0) translateX(0) scale(0.9);
+    opacity: 0.3;
+  }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 2.2s ease-out forwards;
+}
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(255, 182, 245, 0.9) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: galaxy-float 2.5s ease-in-out infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(255, 120, 220, 0.5));
+  z-index: 0;
+}
+
+/* Optional Utility */
+.pointer-events-none {
+  pointer-events: none;
+}
+
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(255, 192, 255, 0.25), 0 0 24px rgba(255, 120, 255, 0.15);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255, 192, 255, 0.5), 0 0 48px rgba(255, 120, 255, 0.3);
+    transform: scale(1.01);
+  }
+}
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressBar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-progress-bar {
+  animation: progressBar 3s linear forwards;
+}

@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"pages\\\\leaderboard.js -> ../components/CountdownTimer\":{\"id\":\"pages\\\\leaderboard.js -> ../components/CountdownTimer\",\"files\":[\"static/chunks/components_CountdownTimer_jsx.js\"]}}"

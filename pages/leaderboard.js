@@ -6,6 +6,20 @@ import SparkleCanvas from '../components/SparkleCanvas';
 
 const CountdownTimer = dynamic(() => import('../components/CountdownTimer'), { ssr: false });
 
+// CoinIcon component
+const CoinIcon = ({ amount, className = '' }) => (
+  <span className={`inline-flex items-center gap-1 ${className}`}>
+    <Image
+      src="/iconcoin/image-Photoroom (17).png"
+      alt="Coin"
+      width={16}
+      height={16}
+      className="inline-block"
+    />
+    <span>{amount}</span>
+  </span>
+);
+
 export default function Leaderboard() {
   const [players, setPlayers] = useState([]);
 
@@ -27,12 +41,12 @@ export default function Leaderboard() {
 
   return (
     <div className="relative min-h-screen overflow-hidden text-white font-sans select-none">
-      {/* Sparkles behind content */}
+      {/* Sparkles */}
       <div className="absolute inset-0 z-10">
         <SparkleCanvas />
       </div>
 
-      {/* Background gradients and grid */}
+      {/* Background */}
       <div className="absolute inset-0 z-0 animate-gradient bg-gradient-to-br from-blue-500 via-pink-400 to-purple-600 blur-sm" />
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:18px_18px]" />
 
@@ -44,22 +58,42 @@ export default function Leaderboard() {
       </Link>
 
       {/* Header */}
-      <div className="relative z-20 py-20 px-4 text-center animate-fade-in-up">
+      <div className="flex justify-center items-center gap-4 mt-10 z-20 relative">
+        <Image
+          src="/iconcoin/image-Photoroom (17).png"
+          alt="Coin"
+          width={40}
+          height={40}
+          className="drop-shadow-md animate-bounce-slow"
+        />
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow-lg">
-          Rain.GG 500 COIN WEEKLY
+          RAIN.GG{' '}
+          <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 bg-clip-text text-transparent">
+            500 COIN
+          </span>{' '}
+          WEEKLY
         </h1>
-        <p className="text-lg text-white/80 mt-1">Leaderboard</p>
+        <Image
+          src="/iconcoin/image-Photoroom (17).png"
+          alt="Coin"
+          width={40}
+          height={40}
+          className="drop-shadow-md animate-bounce-slow"
+        />
       </div>
 
-      <CountdownTimer />
+      {/* Countdown Timer */}
+      <div className="mt-6 z-20 relative">
+        <CountdownTimer />
+      </div>
 
-      {/* Top 3 Cards */}
-      <div className="relative z-20 flex justify-center items-end gap-6 md:gap-12 mb-20 animate-softFadeIn">
+      {/* Top 3 */}
+      <div className="relative z-20 flex justify-center items-end gap-4 md:gap-10 mb-20 mt-10 animate-softFadeIn flex-wrap">
         {/* #2 */}
         {topThree[1] && (
-          <div className="flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300">
+          <div className="flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300 order-1 md:order-1">
             <div className="relative bg-gradient-to-br from-purple-400/60 to-pink-300/40 backdrop-blur-md rounded-3xl border-2 border-white/30 p-5 w-[140px] md:w-[170px] shadow-lg text-center">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white/30 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                 #2
               </div>
               <Image
@@ -69,20 +103,23 @@ export default function Leaderboard() {
                 height={64}
                 className="mx-auto rounded-full border-2 border-white/40"
               />
-              <p className="text-base font-bold mt-3 text-blue-200">{topThree[1].username}</p>
+              <p className="text-base font-bold mt-3 text-purple-500">{topThree[1].username}</p>
               <div className="text-xs text-white/70">WAGERED</div>
               <div className="text-sm font-bold">${topThree[1].wageredAmount.toFixed(2)}</div>
-              <div className="text-xs text-white/70">REWARD</div>
-              <div className="text-yellow-300 font-bold text-sm">{topThree[1].reward}</div>
+              <div className="text-xs text-white/70 mt-1">REWARD</div>
+              <CoinIcon
+                amount={topThree[1].reward}
+                className="text-sm mt-1 font-bold text-white bg-purple-500/70 rounded px-2 py-1"
+              />
             </div>
           </div>
         )}
 
         {/* #1 */}
         {topThree[0] && (
-          <div className="flex flex-col items-center z-20 hover:scale-105 transition-transform duration-300">
-            <div className="relative bg-gradient-to-br from-yellow-300/60 to-pink-200/40 backdrop-blur-md rounded-3xl border-2 border-yellow-400 p-6 w-[160px] md:w-[200px] shadow-lg text-center">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-300 text-black text-xs font-bold px-3 py-1 rounded-full shadow-md">
+          <div className="flex flex-col items-center z-20 transition-transform duration-300 transform hover:scale-110 scale-105 order-0 md:order-2">
+            <div className="relative bg-gradient-to-br from-yellow-300/60 to-pink-200/40 backdrop-blur-md rounded-3xl border-2 border-yellow-400 p-6 w-[180px] md:w-[220px] shadow-lg text-center">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-md">
                 #1
               </div>
               <Image
@@ -95,17 +132,20 @@ export default function Leaderboard() {
               <p className="text-base font-bold mt-3 text-yellow-200">{topThree[0].username}</p>
               <div className="text-xs text-white/70">WAGERED</div>
               <div className="text-sm font-bold">${topThree[0].wageredAmount.toFixed(2)}</div>
-              <div className="text-xs text-white/70">REWARD</div>
-              <div className="text-yellow-100 font-bold text-sm">{topThree[0].reward}</div>
+              <div className="text-xs text-white/70 mt-1">REWARD</div>
+              <CoinIcon
+                amount={topThree[0].reward}
+                className="text-sm mt-1 font-bold text-black bg-yellow-300/80 rounded px-2 py-1"
+              />
             </div>
           </div>
         )}
 
         {/* #3 */}
         {topThree[2] && (
-          <div className="flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300">
+          <div className="flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300 order-2 md:order-3">
             <div className="relative bg-gradient-to-br from-orange-300/50 to-yellow-200/30 backdrop-blur-md rounded-3xl border-2 border-white/30 p-5 w-[140px] md:w-[170px] shadow-lg text-center">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white/30 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                 #3
               </div>
               <Image
@@ -118,8 +158,11 @@ export default function Leaderboard() {
               <p className="text-base font-bold mt-3 text-orange-200">{topThree[2].username}</p>
               <div className="text-xs text-white/70">WAGERED</div>
               <div className="text-sm font-bold">${topThree[2].wageredAmount.toFixed(2)}</div>
-              <div className="text-xs text-white/70">REWARD</div>
-              <div className="text-yellow-300 font-bold text-sm">{topThree[2].reward}</div>
+              <div className="text-xs text-white/70 mt-1">REWARD</div>
+              <CoinIcon
+                amount={topThree[2].reward}
+                className="text-sm mt-1 font-bold text-white bg-orange-400/80 rounded px-2 py-1"
+              />
             </div>
           </div>
         )}
@@ -154,11 +197,65 @@ export default function Leaderboard() {
                   <span className="text-white font-medium">{player.username}</span>
                 </td>
                 <td className="px-4 py-3">${player.wageredAmount.toFixed(2)}</td>
-                <td className="px-4 py-3 text-yellow-300 font-bold">{player.reward}</td>
+                <td className="px-4 py-3 text-yellow-300 font-bold">
+                  {player.rank === 8 ? '-' : <CoinIcon amount={player.reward} />}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Footer */}
+      <div className="relative z-30 mt-20 pb-10 flex flex-col items-center justify-center text-white text-sm opacity-90">
+        <div className="flex items-center gap-5 mb-4">
+          {[
+            {
+              label: 'YouTube',
+              href: 'https://www.youtube.com/@gamblesoftcotton',
+              icon: '/icons/youtube.webp',
+              bg: 'bg-red-600',
+              glow: 'shadow-[0_0_20px_rgba(255,0,0,0.5)]',
+            },
+            {
+              label: 'Twitter',
+              href: 'https://x.com/gambaSoftCotton',
+              icon: '/icons/twitter.png',
+              bg: 'bg-neutral-800',
+              glow: 'shadow-[0_0_15px_rgba(255,255,255,0.3)]',
+            },
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/2QBapYDXJH',
+              icon: '/icons/discord.webp',
+              bg: 'bg-indigo-600',
+              glow: 'shadow-[0_0_20px_rgba(100,150,255,0.4)]',
+            },
+          ].map(({ label, href, icon, bg, glow }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-10 h-10 rounded-full flex items-center justify-center transition transform hover:scale-110 ${bg} ${glow}`}
+            >
+              <img src={icon} alt={label} className="w-5 h-5" />
+            </a>
+          ))}
+        </div>
+
+        <p className="text-white/70">&copy; 2025 All rights reserved</p>
+        <p className="text-white/50 text-xs mt-1">
+          Made by{' '}
+          <a
+            href="https://x.com/MMesinco"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-white"
+          >
+            acesnap
+          </a>
+        </p>
       </div>
     </div>
   );

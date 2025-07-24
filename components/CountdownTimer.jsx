@@ -25,16 +25,16 @@ export default function CountdownTimer() {
   if (timeLeft.total <= 0) {
     return (
       <div className="relative z-20 bg-white/20 max-w-md mx-auto text-center py-4 px-6 rounded-xl border border-pink-300/30 mb-10 animate-fade-in-up">
-        <p className="font-semibold text-pink-200 text-sm">LEADERBOARD CONCLUDED</p>
-        <p className="text-xs text-white/80 mt-1">Check our Discord for your next chance to win!</p>
+        <p className="font-semibold text-white text-sm">LEADERBOARD CONCLUDED</p>
+        <p className="text-xs text-white mt-1">Check our Discord for your next chance to win!</p>
       </div>
     );
   }
 
   return (
     <div className="relative z-20 bg-white/10 backdrop-blur-md max-w-md mx-auto text-center py-4 px-6 rounded-xl border border-white/30 mb-10 animate-fade-in-up shadow-md">
-      <p className="font-semibold text-white/80 text-sm">LEADERBOARD ENDS IN</p>
-      <div className="mt-2 text-lg font-bold tracking-wide text-pink-200">
+      <p className="font-semibold text-white text-sm">LEADERBOARD ENDS IN</p>
+      <div className="mt-2 text-lg font-bold tracking-wide text-white">
         {String(timeLeft.days).padStart(2, '0')}d : {String(timeLeft.hours).padStart(2, '0')}h : {String(timeLeft.minutes).padStart(2, '0')}m : {String(timeLeft.seconds).padStart(2, '0')}s
       </div>
     </div>

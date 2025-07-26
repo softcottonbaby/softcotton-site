@@ -6,7 +6,6 @@ import SparkleCanvas from '../components/SparkleCanvas';
 
 const CountdownTimer = dynamic(() => import('../components/CountdownTimer'), { ssr: false });
 
-// CoinIcon component
 const CoinIcon = ({ amount, className = '' }) => (
   <span className={`inline-flex items-center gap-1 ${className}`}>
     <Image
@@ -58,7 +57,7 @@ export default function Leaderboard() {
       </Link>
 
       {/* Header */}
-      <div className="flex justify-center items-center gap-4 mt-10 z-20 relative">
+      <div className="flex justify-center items-center gap-4 mt-10 z-20 relative text-center px-4">
         <Image
           src="/iconcoin/image-Photoroom (17).png"
           alt="Coin"
@@ -83,15 +82,15 @@ export default function Leaderboard() {
       </div>
 
       {/* Countdown Timer */}
-      <div className="mt-6 z-20 relative">
+      <div className="mt-6 z-20 relative px-4">
         <CountdownTimer />
       </div>
 
       {/* Top 3 */}
-      <div className="relative z-20 flex justify-center items-end gap-4 md:gap-10 mb-20 mt-10 animate-softFadeIn flex-wrap">
+      <div className="relative z-20 flex flex-wrap justify-center items-end gap-4 md:gap-10 mb-20 mt-10 animate-softFadeIn px-4">
         {/* #2 */}
         {topThree[1] && (
-          <div className="flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300 order-1 md:order-1">
+          <div className="mb-6 md:mb-0 flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300 order-1 md:order-1">
             <div className="relative bg-gradient-to-br from-purple-400/60 to-pink-300/40 backdrop-blur-md rounded-3xl border-2 border-white/30 p-5 w-[140px] md:w-[170px] shadow-lg text-center">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                 #2
@@ -117,7 +116,7 @@ export default function Leaderboard() {
 
         {/* #1 */}
         {topThree[0] && (
-          <div className="flex flex-col items-center z-20 transition-transform duration-300 transform hover:scale-110 scale-105 order-0 md:order-2">
+          <div className="mb-6 md:mb-0 flex flex-col items-center z-20 transition-transform duration-300 transform hover:scale-110 scale-105 order-0 md:order-2">
             <div className="relative bg-gradient-to-br from-yellow-300/60 to-pink-200/40 backdrop-blur-md rounded-3xl border-2 border-yellow-400 p-6 w-[180px] md:w-[220px] shadow-lg text-center">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-md">
                 #1
@@ -143,7 +142,7 @@ export default function Leaderboard() {
 
         {/* #3 */}
         {topThree[2] && (
-          <div className="flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300 order-2 md:order-3">
+          <div className="mb-6 md:mb-0 flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300 order-2 md:order-3">
             <div className="relative bg-gradient-to-br from-orange-300/50 to-yellow-200/30 backdrop-blur-md rounded-3xl border-2 border-white/30 p-5 w-[140px] md:w-[170px] shadow-lg text-center">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                 #3

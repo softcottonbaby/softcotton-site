@@ -50,7 +50,7 @@ export default function Leaderboard() {
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:18px_18px]" />
 
       {/* Back Button */}
-      <Link href="/" className="absolute top-6 left-6 z-30">
+      <Link href="/" className="relative z-[100] block md:absolute md:top-6 md:left-6 text-center mt-6 md:mt-0">
         <button className="w-36 px-4 py-2 rounded-lg text-white font-semibold uppercase text-sm bg-gradient-to-r from-pink-500/30 to-blue-500/30 border border-white/40 backdrop-blur-md shadow-md transition hover:scale-105 hover:shadow-[0_0_18px_rgba(255,255,255,0.3)]">
           &lt; Back
         </button>
@@ -81,91 +81,92 @@ export default function Leaderboard() {
         />
       </div>
 
-      {/* Countdown Timer */}
+      {/* Countdown */}
       <div className="mt-6 z-20 relative px-4">
         <CountdownTimer />
       </div>
 
-      {/* Top 3 */}
-      <div className="relative z-20 flex flex-wrap justify-center items-end gap-4 md:gap-10 mb-20 mt-10 animate-softFadeIn px-4">
-        {/* #2 */}
-        {topThree[1] && (
-          <div className="mb-6 md:mb-0 flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300 order-1 md:order-1">
-            <div className="relative bg-gradient-to-br from-purple-400/60 to-pink-300/40 backdrop-blur-md rounded-3xl border-2 border-white/30 p-5 w-[140px] md:w-[170px] shadow-lg text-center">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                #2
-              </div>
-              <Image
-                src={topThree[1].profilePicture}
-                alt={topThree[1].username}
-                width={64}
-                height={64}
-                className="mx-auto rounded-full border-2 border-white/40"
-              />
-              <p className="text-base font-bold mt-3 text-purple-500">{topThree[1].username}</p>
-              <div className="text-xs text-white/70">WAGERED</div>
-              <div className="text-sm font-bold">${topThree[1].wageredAmount.toFixed(2)}</div>
-              <div className="text-xs text-white/70 mt-1">REWARD</div>
-              <CoinIcon
-                amount={topThree[1].reward}
-                className="text-sm mt-1 font-bold text-white bg-purple-500/70 rounded px-2 py-1"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* #1 */}
-        {topThree[0] && (
-          <div className="mb-6 md:mb-0 flex flex-col items-center z-20 transition-transform duration-300 transform hover:scale-110 scale-105 order-0 md:order-2">
-            <div className="relative bg-gradient-to-br from-yellow-300/60 to-pink-200/40 backdrop-blur-md rounded-3xl border-2 border-yellow-400 p-6 w-[180px] md:w-[220px] shadow-lg text-center">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                #1
-              </div>
-              <Image
-                src={topThree[0].profilePicture}
-                alt={topThree[0].username}
-                width={70}
-                height={70}
-                className="mx-auto rounded-full border-4 border-white/50"
-              />
-              <p className="text-base font-bold mt-3 text-yellow-200">{topThree[0].username}</p>
-              <div className="text-xs text-white/70">WAGERED</div>
-              <div className="text-sm font-bold">${topThree[0].wageredAmount.toFixed(2)}</div>
-              <div className="text-xs text-white/70 mt-1">REWARD</div>
-              <CoinIcon
-                amount={topThree[0].reward}
-                className="text-sm mt-1 font-bold text-black bg-yellow-300/80 rounded px-2 py-1"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* #3 */}
-        {topThree[2] && (
-          <div className="mb-6 md:mb-0 flex flex-col items-center z-10 hover:scale-105 transition-transform duration-300 order-2 md:order-3">
-            <div className="relative bg-gradient-to-br from-orange-300/50 to-yellow-200/30 backdrop-blur-md rounded-3xl border-2 border-white/30 p-5 w-[140px] md:w-[170px] shadow-lg text-center">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                #3
-              </div>
-              <Image
-                src={topThree[2].profilePicture}
-                alt={topThree[2].username}
-                width={64}
-                height={64}
-                className="mx-auto rounded-full border-2 border-white/40"
-              />
-              <p className="text-base font-bold mt-3 text-orange-200">{topThree[2].username}</p>
-              <div className="text-xs text-white/70">WAGERED</div>
-              <div className="text-sm font-bold">${topThree[2].wageredAmount.toFixed(2)}</div>
-              <div className="text-xs text-white/70 mt-1">REWARD</div>
-              <CoinIcon
-                amount={topThree[2].reward}
-                className="text-sm mt-1 font-bold text-white bg-orange-400/80 rounded px-2 py-1"
-              />
-            </div>
-          </div>
-        )}
+      {/* Top 3 Cards */}
+<div className="relative z-20 flex flex-col md:flex-row justify-center items-center md:items-end gap-4 md:gap-10 mb-20 mt-10 animate-softFadeIn px-4">
+  {/* #1 */}
+  {topThree[0] && (
+    <div className="order-1 md:order-2 w-[180px] md:w-[220px] hover:scale-105 transition-transform duration-300">
+      <div className="relative bg-gradient-to-br from-yellow-300/60 to-pink-200/40 backdrop-blur-md rounded-3xl border-2 border-yellow-400 p-6 shadow-lg text-center h-full">
+        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full shadow-md">
+          #1
+        </div>
+        <Image
+          src={topThree[0].profilePicture}
+          alt={topThree[0].username}
+          width={70}
+          height={70}
+          className="mx-auto rounded-full border-4 border-white/50"
+        />
+        <p className="text-base font-bold mt-3 text-yellow-200">{topThree[0].username}</p>
+        <div className="text-xs text-white/70">WAGERED</div>
+        <div className="text-sm font-bold">${topThree[0].wageredAmount.toFixed(2)}</div>
+        <div className="text-xs text-white/70 mt-1">REWARD</div>
+        <CoinIcon
+          amount={topThree[0].reward}
+          className="text-sm mt-1 font-bold text-black bg-yellow-300/80 rounded px-2 py-1"
+        />
       </div>
+    </div>
+  )}
+
+  {/* #2 */}
+  {topThree[1] && (
+    <div className="order-2 md:order-1 w-[180px] md:w-[170px] hover:scale-105 transition-transform duration-300">
+      <div className="relative bg-gradient-to-br from-purple-400/60 to-pink-300/40 backdrop-blur-md rounded-3xl border-2 border-white/30 p-6 shadow-lg text-center h-full">
+        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+          #2
+        </div>
+        <Image
+          src={topThree[1].profilePicture}
+          alt={topThree[1].username}
+          width={64}
+          height={64}
+          className="mx-auto rounded-full border-2 border-white/40"
+        />
+        <p className="text-base font-bold mt-3 text-purple-500">{topThree[1].username}</p>
+        <div className="text-xs text-white/70">WAGERED</div>
+        <div className="text-sm font-bold">${topThree[1].wageredAmount.toFixed(2)}</div>
+        <div className="text-xs text-white/70 mt-1">REWARD</div>
+        <CoinIcon
+          amount={topThree[1].reward}
+          className="text-sm mt-1 font-bold text-white bg-purple-500/70 rounded px-2 py-1"
+        />
+      </div>
+    </div>
+  )}
+
+  {/* #3 */}
+  {topThree[2] && (
+    <div className="order-3 md:order-3 w-[180px] md:w-[170px] hover:scale-105 transition-transform duration-300">
+      <div className="relative bg-gradient-to-br from-orange-300/50 to-yellow-200/30 backdrop-blur-md rounded-3xl border-2 border-white/30 p-6 shadow-lg text-center h-full">
+        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+          #3
+        </div>
+        <Image
+          src={topThree[2].profilePicture}
+          alt={topThree[2].username}
+          width={64}
+          height={64}
+          className="mx-auto rounded-full border-2 border-white/40"
+        />
+        <p className="text-base font-bold mt-3 text-orange-200">{topThree[2].username}</p>
+        <div className="text-xs text-white/70">WAGERED</div>
+        <div className="text-sm font-bold">${topThree[2].wageredAmount.toFixed(2)}</div>
+        <div className="text-xs text-white/70 mt-1">REWARD</div>
+        <CoinIcon
+          amount={topThree[2].reward}
+          className="text-sm mt-1 font-bold text-white bg-orange-400/80 rounded px-2 py-1"
+        />
+      </div>
+    </div>
+  )}
+</div>
+
 
       {/* Leaderboard Table */}
       <div className="relative z-20 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl border border-white/20 animate-softFadeIn bg-white/10 backdrop-blur-lg">
